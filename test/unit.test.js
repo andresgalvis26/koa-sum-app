@@ -23,7 +23,7 @@ describe('Unit Tests - sum function', () => {
     // });
 
     // Prueba que falla intencionalmente
-    it('Fallará porque espero un número incorrecto', () => {
-        assert.strictEqual(sum(2, 2), 5);
-    });
+    // it('Fallará porque espero un número incorrecto', () => {
+    //     assert.strictEqual(sum(2, 2), 5);
+    // });
 })
