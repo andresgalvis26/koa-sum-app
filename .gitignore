@@ -1,0 +1,26 @@
+/node_modules/
+.env
+/dist/
+.DS_Store
+.vscode/
+npm
+-debug.log
+yarn
+.lock
+.idea/
+*.iml
+coverage/
+*.log
+*.tsbuildinfo
+*.swp
+*.swo
+*.bak
+*.tmp
+*.orig
+*.rej
+*.class
+*.war
+*.jar
+
+# Docker
+*.dockerignore
