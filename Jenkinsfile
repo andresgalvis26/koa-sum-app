@@ -31,7 +31,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = 'mi-aplicacion-node'
+        IMAGE_NAME = 'koa-sum-app'
         IMAGE_TAG = 'latest'
     }
 
