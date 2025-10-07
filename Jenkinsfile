@@ -31,7 +31,8 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = 'koa-sum-app'
+        DOCKER_USER = 'anfelipegalvis'
+        IMAGE_NAME = "${DOCKER_USER}/koa-sum-app"
         IMAGE_TAG = 'latest'
     }
 
