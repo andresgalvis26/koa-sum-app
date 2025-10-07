@@ -30,7 +30,7 @@
 pipeline {
     agent any
 
-    environemnt {
+    environment {
         IMAGE_NAME = 'mi-aplicacion-node'
         IMAGE_TAG = 'latest'
     }
