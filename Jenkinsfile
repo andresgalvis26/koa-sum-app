@@ -6,7 +6,7 @@ pipeline {
         IMAGE_NAME = "${DOCKER_USER}/koa-sum-app"
         IMAGE_TAG = 'latest'
         AZURE_APP_NAME = 'koa-sum-api'
-        AZURE_RESOURCE_GROUP = 'rg-koa-sum'
+        AZURE_RG = 'rg-koa-sum'
     }
 
     stages {
