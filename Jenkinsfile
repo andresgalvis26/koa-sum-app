@@ -37,7 +37,7 @@ pipeline {
                     // Escribir las credenciales en un archivo temporal
                     writeFile file: 'azure_creds.json', text: "${AZURE_CREDENTIALS_JSON}"
 
-                    sh '''
+                    sh """
                         AZURE_APP_ID=$(jq -r .clientId azure_creds.json)
                         AZURE_PASSWORD=$(jq -r .clientSecret azure_creds.json)
                         AZURE_TENANT=$(jq -r .tenantId azure_creds.json)
@@ -47,7 +47,7 @@ pipeline {
 
                         echo "🔹 Reiniciando Web App para aplicar la nueva imagen..."
                         az webapp restart --name ${AZURE_APP_NAME} --resource-group ${AZURE_RG}
-                    '''
+                    """
                 }
             }
         }
