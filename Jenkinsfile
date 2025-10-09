@@ -23,7 +23,7 @@ pipeline {
                 scannerHome = tool 'SonarQubeScanner' // nombre que configuraste en Global Tool Configuration
             }
             steps {
-                withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]) {
+                withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_TOKEN')]) {
                     withSonarQubeEnv('SonarQubeServer') { // nombre que diste al servidor en Configure System
                         sh """
                             ${scannerHome}/bin/sonar-scanner \
