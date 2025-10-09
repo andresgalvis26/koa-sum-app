@@ -18,6 +18,33 @@ pipeline {
             }
         }
 
+        stage('Análisis de código con SonarQube') {
+            environment {
+                scannerHome = tool 'SonarQubeScanner' // nombre que configuraste en Global Tool Configuration
+            }
+            steps {
+                withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]) {
+                    withSonarQubeEnv('SonarQubeServer') { // nombre que diste al servidor en Configure System
+                        sh """
+                            ${scannerHome}/bin/sonar-scanner \
+                            -Dsonar.projectKey=koa-sum-app \
+                            -Dsonar.sources=. \
+                            -Dsonar.exclusions=**/node_modules/**
+                        """
+                    }
+                }
+
+            }
+        }
+
+        stage('Esperar Quality Gate') {
+            steps {
+                timeout(time: 2, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true
+                }
+            }
+        }
+
 
         stage('Publicar imagen en Docker Hub') {
             steps {
