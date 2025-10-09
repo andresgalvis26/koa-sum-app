@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        nodejs '22.20.0' // nombre que configuraste en Global Tool Configuration
+    }
+
     environment {
         DOCKER_USER = 'anfelipegalvis'
         IMAGE_NAME = "${DOCKER_USER}/koa-sum-app"
