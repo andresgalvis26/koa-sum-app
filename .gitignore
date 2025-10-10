@@ -24,3 +24,14 @@ coverage/
 
 # Docker
 *.dockerignore
+
+# Logs
+logs
+*.log
+pids
+*.pid
+
+# Coverage
+coverage/
+.nyc_output/
+

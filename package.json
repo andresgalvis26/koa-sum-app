@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "nyc --reporter=lcov --reporter=text mocha 'test/**/*.test.js'",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +17,7 @@
   },
   "devDependencies": {
     "mocha": "^11.7.4",
+    "nyc": "^17.1.0",
     "supertest": "^7.1.4"
   }
 }

@@ -33,7 +33,8 @@ pipeline {
                             ${scannerHome}/bin/sonar-scanner \
                             -Dsonar.projectKey=koa-sum-app \
                             -Dsonar.sources=. \
-                            -Dsonar.exclusions=**/node_modules/**
+                            -Dsonar.exclusions=**/node_modules/** \
+                            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
                         """
                     }
                 }

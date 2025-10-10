@@ -31,17 +31,27 @@ router.get('/rest/:a/:b', (ctx, next) => {
 
 
 
-
-
-router.get('*', (ctx) => {
-    ctx.status = 404;
-    ctx.body = '404 Not Found';
-    logger.warn(`404 Not Found: ${ctx.request.url}`);
-});
+// router.all('/:path(.*)', async (ctx) => {
+//     ctx.status = 404;
+//     ctx.body = { message: 'Not Found' };
+//     logger.warn(`404 Not Found: ${ctx.request.url}`);
+// });
 
 app
     .use(router.routes())
     .use(router.allowedMethods());
+
+
+// Middleware global para rutas no encontradas (404)
+app.use(async (ctx, next) => {
+    await next(); // Espera que los demás middlewares/rutas se ejecuten
+    if (ctx.status === 404) {
+        ctx.status = 404;
+        ctx.body = { message: 'Not Found' };
+        logger.warn(`404 Not Found: ${ctx.request.url}`);
+    }
+});
+
 
 app.listen(process.env.PORT || 3000, () => {
     console.log('Server is running on port:', process.env.PORT || 3000);
