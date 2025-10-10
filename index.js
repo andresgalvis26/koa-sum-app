@@ -29,6 +29,16 @@ router.get('/rest/:a/:b', (ctx, next) => {
     logger.info(`Subtraction response: ${ctx.body}`);
 });
 
+
+
+
+
+router.get('*', (ctx) => {
+    ctx.status = 404;
+    ctx.body = '404 Not Found';
+    logger.warn(`404 Not Found: ${ctx.request.url}`);
+});
+
 app
     .use(router.routes())
     .use(router.allowedMethods());
